@@ -47,4 +47,7 @@ for profile in profiles:
     print(profile)
     more_info = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
     more_info.click()
+    sleep(1)
+    groups = driver.find_element_by_xpath("//div[contains(text(), 'Following')]")
+    groups.click()
     sleep(2)

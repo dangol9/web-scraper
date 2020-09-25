@@ -35,9 +35,6 @@ for i in range(1, 6):
 
 #python -i scraping.py
 
-page = driver.page_source
-soup = BeautifulSoup(page, "html.parser")
-
 links = driver.find_elements_by_class_name('simple_fit_item')
 
 profiles = []
@@ -46,19 +43,20 @@ sleep(1)
 
 for link in links:
     profiles.append(link.get_attribute('href'))
-    #print(link.get_attribute('text')))
 
 sleep(1)
 
 for profile in profiles:
     driver.get(profile)
+
     sleep(2)
+
     print(profile)
     profile_names = driver.find_elements_by_xpath('//h2[@class="op_header"]')
     profile_names.pop(0)
 
-    for name in profile_names:
-        print(name.text)
+    for profile_name in profile_names:
+        print(profile_name.text)
 
     more_info_btn = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
     more_info_btn.click()
@@ -72,20 +70,9 @@ for profile in profiles:
 
     group_names = driver.find_elements_by_xpath('//div[@class="si_body"]')
 
-    for name in group_names:
-        print(name.text.split()[0])
-    #last_height = driver.execute_script("return document.body.scrollHeight")
-    #while True:
-    # Scroll down to bottom
-    #    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    # Wait to load page
-    #    sleep(2)
-    # Calculate new scroll height and compare with last scroll height
-    #    new_height = driver.execute_script("return document.body.scrollHeight")
-    #    if new_height == last_height:
-    #        break
-    #    last_height = new_height
-    #    sleep(1)
-
+    for group_name in group_names:
+        print(group_name.text)
 
     sleep(1)
+
+driver.quit()

@@ -68,10 +68,27 @@ for profile in profiles:
 
     sleep(1)
 
+    last_height = driver.execute_script("return document.documentElement.scrollHeight")
+    while True:
+
+        driver.execute_script("window.scrollTo(0,document.documentElement.scrollHeight);")
+
+        sleep(1)
+
+        new_height = driver.execute_script("return document.documentElement.scrollHeight")
+
+        if new_height == last_height:
+            break
+        last_height = new_height
+
+    sleep(1)
+
     group_names = driver.find_elements_by_xpath('//div[@class="si_body"]')
 
+    sleep(1)
+
     for group_name in group_names:
-        print(group_name.text)
+        print(group_name.text.split("\n")[0])
 
     sleep(1)
 

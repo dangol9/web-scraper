@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -63,33 +62,43 @@ for profile in profiles:
 
     sleep(2)
 
-    groups_btn = driver.find_element_by_xpath("//div[contains(text(), 'Following')]")
-    groups_btn.click()
-
-    sleep(1)
-
-    last_height = driver.execute_script("return document.documentElement.scrollHeight")
-    while True:
-
-        driver.execute_script("window.scrollTo(0,document.documentElement.scrollHeight);")
+    # add error catch 
+    try:
+        groups_btn = driver.find_element_by_xpath("//div[contains(text(), 'Following')]")
+        groups_btn.click()
 
         sleep(1)
 
-        new_height = driver.execute_script("return document.documentElement.scrollHeight")
+        last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-        if new_height == last_height:
-            break
-        last_height = new_height
+        while True:
 
-    sleep(1)
+            driver.execute_script("window.scrollTo(0,document.documentElement.scrollHeight);")
 
-    group_names = driver.find_elements_by_xpath('//div[@class="si_body"]')
+            sleep(1)
 
-    sleep(1)
+            new_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-    for group_name in group_names:
-        print(group_name.text.split("\n")[0])
+            if new_height == last_height:
+                break
+            last_height = new_height
 
-    sleep(1)
+        sleep(1)
+
+        group_names = driver.find_elements_by_xpath('//div[@class="si_body"]')
+
+        sleep(1)
+
+        if not group_names:
+            print("Groups not available")
+        else:
+            for group_name in group_names:
+                print(group_name.text.split("\n")[0])
+        print("\n")
+        sleep(1)
+
+    except:
+        print("Groups not available")
+    #error catch ends here
 
 driver.quit()

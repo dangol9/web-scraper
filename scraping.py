@@ -29,9 +29,14 @@ login_btn.click()
 
 sleep(2)
 
-#driver.get("https://m.vk.com/search?c[section]=people&c[group]=9884911")
-driver.get("https://m.vk.com/search?c[section]=people&c[group]=178161127&offset=200")
+print("Count has to be bigger than offset, i.e count = 100 and offset = 50 to show 50 users")
+count = input("Enter count:")
+offset = input("Enter offset:")
 
+website = ("https://m.vk.com/search?c[section]=people&c[group]=178161127&c[count]=" + count + "&offset=" + offset)
+#driver.get("https://m.vk.com/search?c[section]=people&c[group]=9884911")
+#driver.get("https://m.vk.com/search?c[section]=people&c[group]=178161127&offset=200")
+driver.get(website)
 sleep(1)
 
 links = []
@@ -58,7 +63,7 @@ while True:
 
                 more_users_btn = driver.find_element_by_xpath('//a[@class="show_more"]')
                 more_users_btn.click()
-                
+
                 sleep(1)
 
     except (exceptions.StaleElementReferenceException, exceptions.NoSuchElementException) as e:
@@ -83,10 +88,6 @@ while True:
 sleep(1)
 
 #python scraping.py
-
-sleep(1)
-
-sleep(1)
 
 df['Profile'] = profiles
 
@@ -142,6 +143,7 @@ for profile in profiles:
             print("Groups not available")
             group_names_table.insert(i, ["Groups not available"])
             #group_names_table.append("Groups not available")
+            print(i)
             i += 1
 
         else:

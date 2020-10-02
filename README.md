@@ -27,7 +27,7 @@ How to run:
 
   1. Download Python.
   2. Download the scraping.py and the secrets.py files.
-  3. Put the scraping.py file into a directory.
+  3. Put the scraping.py and secrets.py files into a directory.
   4. Use cmd to install all the dependencies that are required. (pip install *dependency*)
   5. Make sure that VK two-step authentication is disabled on your account.
   6. Change the secrets.py file data - username should be your VK email address and password should be your VK password. **(Example: username="email@mail.ru")**

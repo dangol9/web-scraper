@@ -5,7 +5,7 @@ Python web scraper for the Visualizing Social Networks Project
 
 This is a script that scrapes users, links to their profiles and the groups that they are in. The amount of scraped users per runtime is not limited, but is affected by webdriver stability and network connectivity - minor changes in these things may alter the scraping behavior and crash the script, so make sure that your interent is stable and that your computer doesn't go into sleep mode while the script is running, also it is recommended to let the computer idle while the script is running - i.e leave the script running overnight. <br>
 
-Script is the file named **scripting.py** <br>
+Script is the file named **scraping.py** <br>
 
 Script asks the user for input: <br>
   **count - how many users we want to show on the list** <br>

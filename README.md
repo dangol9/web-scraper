@@ -1,29 +1,29 @@
 # web-scraper
 Python web scraper for the Visualizing Social Networks Project
 
-**Tested with 1000 users**
+**Tested with 1000 users** <br>
 
-This is a script that scrapes users, links to their profiles and the groups that they are in. The amount of scraped users per runtime is not limited, but is affected by webdriver stability and network connectivity - minor changes in these things may alter the scraping behavior and crash the script.
+This is a script that scrapes users, links to their profiles and the groups that they are in. The amount of scraped users per runtime is not limited, but is affected by webdriver stability and network connectivity - minor changes in these things may alter the scraping behavior and crash the script, so make sure that your interent is stable and that your computer doesen't go into sleep mode while the script is running, also it is recommended to let the computer idle while the script is running - i.e leave the script running overnight. <br>
 
-Script is the file named **scripting.py**
+Script is the file named **scripting.py** <br>
 
-Script asks the user for input:
-  **count - how many users we want to show on the list**
-  **offset - how many users ahead from the first users should the list be**
+Script asks the user for input: <br>
+  **count - how many users we want to show on the list** <br>
+  **offset - how many users ahead from the first users should the list be** <br>
   
 Ideally, if we want to scrape 2000 users - then the input would be: **offset=0 and count = 2000**, <br>
-**BUT** since count=0 is not supported - there is an another file named **scrape_first_user.py** which scrapes the first user on the list and after that we can continue with **offset = 1 and count = 2000**
+**BUT** since count=0 is not supported - there is an another file named **scrape_first_user.py** which scrapes the first user on the list and after that we can continue with **offset = 1 and count = 2000** <br>
 
-**To scrape 2000 users after the first 2000 users - the input should be: offset=2000 and count=4000**
+**To scrape 2000 users after the first 2000 users - the input should be: offset=2000 and count=4000** <br>
 
-Script logic - **scrape all user data from the desired group** > **use that data to navigate to each scraped user** > **check the "Following" page of each scraped user** > **scrape around 40 groups from each user** > **repeat** > **at the end all the data is appended into an excel table.**
+Script logic - **scrape all user data from the desired group** > **use that data to navigate to each scraped user** > **check the "Following" page of each scraped user** > **scrape around 40 groups from each user** > **repeat** > **at the end all the data is appended into an excel table.** <br>
 
 Dependencies: <br>
   **selenium <br>
   webdriver_manager <br>
   pandas** <br>
   
-How to run:
+How to run: 
 
   1. Download Python.
   2. Download the scraping.py and the secrets.py files.

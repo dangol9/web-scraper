@@ -12,7 +12,7 @@ Script asks the user for input: <br>
   **offset - how many users ahead from the first users should the list be** <br>
   
 Ideally, if we want to scrape 2000 users - then the input would be: **offset=0 and count = 2000**, <br>
-**BUT** since count=0 is not supported - there is an another file named **scrape_first_user.py** which scrapes the first user on the list and after that we can continue with **offset = 1 and count = 2000** <br>
+**BUT** since count=0 is not supported - there is an another file named **scrape_first_user.py** which scrapes the first user on the list and after that we can continue with **scraping.py** with the values **offset = 1 and count = 2000** <br>
 
 **To scrape 2000 users after the first 2000 users - the input should be: offset=2000 and count=4000** <br>
 

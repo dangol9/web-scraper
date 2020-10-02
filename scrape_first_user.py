@@ -29,45 +29,24 @@ login_btn.click()
 
 sleep(2)
 
-print("Count has to be bigger than offset, i.e count = 100 and offset = 50 to show 50 users")
-count = input("Enter count:")
-offset = input("Enter offset:")
 
-website = ("https://m.vk.com/search?c[section]=people&c[group]=9884911&c[count]=" + count + "&offset=" + offset)
+website = ("https://m.vk.com/search?c[section]=people&c[group]=9884911")
 
 driver.get(website)
 sleep(1)
 
-links = []
+
 profiles = []
 
-while True:
 
-    for i in range(1, 3):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+sleep(1)
 
-        sleep(1)
+link = driver.find_element_by_class_name('simple_fit_item')
 
-    try:
+profiles.append(link.get_attribute('href'))
 
-        links = driver.find_elements_by_class_name('simple_fit_item')
+sleep(1)
 
-        if not links:
-
-            break
-
-        else:
-                for link in links:
-                    profiles.append(link.get_attribute('href'))
-
-                more_users_btn = driver.find_element_by_xpath('//a[@class="show_more"]')
-                more_users_btn.click()
-
-                sleep(1)
-
-    except (exceptions.StaleElementReferenceException, exceptions.NoSuchElementException) as e:
-        pass
-        break
 
 sleep(1)
 
@@ -88,7 +67,7 @@ for profile in profiles:
     sleep(2)
 
     print(profile)
-    sleep(1)
+
     profile_names = driver.find_elements_by_xpath('//h2[@class="op_header"]')
     profile_names.pop(0)
 
@@ -98,7 +77,7 @@ for profile in profiles:
         for profile_name in profile_names:
 
             print(profile_name.text)
-            sleep(1)
+
             profile_names_table.append(profile_name.text)
 
         more_info_btn = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
@@ -135,10 +114,10 @@ for profile in profiles:
                 listing.append(group_name.text.split("\n")[0])
                 print(group_name.text.split("\n")[0])
 
-
+                print(i)
 
             group_names_table.insert(i, listing)
-            print(i)
+
             i += 1
 
         print("\n")
@@ -161,6 +140,6 @@ for profile in profiles:
 df['Name'] = profile_names_table
 df['Groups'] = group_names_table
 
-df.to_excel('result.xlsx', index = False)
+df.to_excel('result_first.xlsx', index = False)
 
 driver.quit()

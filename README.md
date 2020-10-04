@@ -33,7 +33,7 @@ How to run:
   3. Put the scraping.py and secrets.py files into a directory.
   4. Use cmd to install all the dependencies that are required. (pip install *dependency*)
   5. Make sure that VK two-step authentication is disabled on your account.
-  6. Change the secrets.py file data - username should be your VK email address and password should be your VK password. **(Example: username="email@mail.ru")**
+  6. Change the secrets.py file data - username should be your VK email address or phone number and password should be your VK password. **(Example: username="email@mail.ru")**
   7. Run the script by typing *python scraping.py*.
   8. Enter offset and count values.
   9. Sit back and look at how the script works. **(Expected runtime: 10 minutes per 100 users)**

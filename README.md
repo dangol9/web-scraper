@@ -20,6 +20,7 @@ Script logic - **scrape all user data from the desired group** > **use that data
 
 Dependencies: <br>
   **selenium <br>
+  openpyxl <br>
   webdriver_manager <br>
   pandas** <br>
   

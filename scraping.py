@@ -33,7 +33,7 @@ print("Count has to be bigger than offset, i.e count = 100 and offset = 50 to sh
 count = input("Enter count:")
 offset = input("Enter offset:")
 
-website = ("https://m.vk.com/search?c[section]=people&c[group]=9884911&c[count]=" + count + "&offset=" + offset)
+website = ("https://m.vk.com/search?c[section]=people&c[group]=87240845&c[count]=" + count + "&offset=" + offset)
 
 driver.get(website)
 sleep(1)

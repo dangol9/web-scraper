@@ -30,7 +30,7 @@ login_btn.click()
 sleep(2)
 
 
-website = ("https://m.vk.com/search?c[section]=people&c[group]=9884911")
+website = ("https://m.vk.com/search?c[section]=people&c[group]=87240845")
 
 driver.get(website)
 sleep(1)

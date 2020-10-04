@@ -29,28 +29,38 @@ login_btn.click()
 
 sleep(2)
 
-print("Count has to be bigger than offset, i.e count = 100 and offset = 50 to show 50 users")
-count = input("Enter count:")
 offset = input("Enter offset:")
+num_of_pages = input("Enter number of pages you want to see:")
 
-website = ("https://m.vk.com/search?c[section]=people&c[group]=87240845&c[count]=" + count + "&offset=" + offset)
+if int(offset) == 0:
+    offset_pages=0
+else:
+    offset_pages = int(offset) / 50
+
+counter = int(offset_pages) + 1
+
+all_pages = int(num_of_pages) + int(offset_pages)
+
+website = ("https://m.vk.com/anxietyboys?act=members&offset=" + offset)
 
 driver.get(website)
+
 sleep(1)
 
 links = []
 profiles = []
 
+
 while True:
 
-    for i in range(1, 3):
+    for i in range(1, 6):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         sleep(1)
 
     try:
 
-        links = driver.find_elements_by_class_name('simple_fit_item')
+        links = driver.find_elements_by_class_name('inline_item')
 
         if not links:
 
@@ -60,7 +70,16 @@ while True:
                 for link in links:
                     profiles.append(link.get_attribute('href'))
 
-                more_users_btn = driver.find_element_by_xpath('//a[@class="show_more"]')
+                counter += 1
+
+                print("Current page is: ", counter)
+                print("Allpages", all_pages)
+
+                if counter == (all_pages + 1):
+                    print(profiles)
+                    break
+
+                more_users_btn = driver.find_element_by_xpath("//a[contains(text(), '{}')]".format(counter))
                 more_users_btn.click()
 
                 sleep(1)
@@ -81,6 +100,7 @@ group_names_table = []
 
 i = 0
 
+
 for profile in profiles:
 
     driver.get(profile)
@@ -89,18 +109,27 @@ for profile in profiles:
 
     print(profile)
     sleep(1)
-    profile_names = driver.find_elements_by_xpath('//h2[@class="op_header"]')
-    profile_names.pop(0)
+    try:
+        profile_names = driver.find_elements_by_xpath('//h2[@class="op_header"]')
+        profile_names.pop(0)
+        if not profile_names:
+            print("Profile deleted")
+            profile_names.append("Profile deleted")
+    except:
+        print("Profile deleted")
+        profile_names.append("Profile deleted")
+
 
 # add error catch
     try:
 
         for profile_name in profile_names:
-
-            print(profile_name.text)
-            sleep(1)
-            profile_names_table.append(profile_name.text)
-
+            try:
+                print(profile_name.text)
+                sleep(1)
+                profile_names_table.append(profile_name.text)
+            except:
+                profile_names_table.append(profile_name)
         more_info_btn = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
         more_info_btn.click()
 
@@ -161,6 +190,6 @@ for profile in profiles:
 df['Name'] = profile_names_table
 df['Groups'] = group_names_table
 
-df.to_excel('result.xlsx', index = False)
+df.to_excel('result_3.xlsx', index = False)
 
 driver.quit()

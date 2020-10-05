@@ -31,7 +31,7 @@ Dependencies: <br>
 How to run: 
 
 **MAKE SURE YOU HAVE STABLE INTERNET CONNECTION.**
-
+**MAKE SURE YOUR VK LANGUAGE IS SET TO ENGLISH**
   1. Download Python.
   2. Download the scraping.py and the secrets.py files.
   3. Put the scraping.py and secrets.py files into a directory.

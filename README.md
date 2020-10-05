@@ -42,3 +42,4 @@ How to run:
   8. Enter offset and number of pages values.
   9. Sit back and look at how the script works. **(Expected runtime: 10 minutes per 100 users)**
   
+**TO DO AN EMERGENCY STOP - PRESS CTRL+C** - if this doesn't work once - then keep doing it until the script exits.

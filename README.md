@@ -3,7 +3,7 @@ Python web scraper for the Visualizing Social Networks Project
 
 **Tested with 500 users** <br>
 
-This is a script that scrapes users, links to their profiles and the groups that they are in. The amount of scraped users per runtime is not limited, but is affected by webdriver stability and network connectivity - minor changes in these things may alter the scraping behavior and crash the script, so make sure that your internet is stable and that your computer doesn't go into sleep mode while the script is running, also it is recommended to let the computer idle while the script is running - i.e leave the script running overnight. **Recommended to run 500 users per runtime**<br>
+This is a script that scrapes users, links to their profiles and the groups that they are in. The amount of scraped users per runtime is not limited, but is affected by webdriver stability and network connectivity - minor changes in these things may alter the scraping behavior and crash the script, so make sure that your internet is stable and that your computer doesn't go into sleep mode while the script is running, also it is recommended to let the computer idle while the script is running - i.e leave the script running overnight. **Recommended to scrape 500 users per runtime**<br>
 
 Script is the file named **scraping.py** <br>
 

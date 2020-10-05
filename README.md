@@ -15,7 +15,7 @@ If we want to scrape 2000 users - then the input should be: **offset=0 and numbe
 **scrape_first_user.py (OBSOLETE) still works but loses it's purpose, because the new script takes the first user for data as well.** <br>
 
 **To scrape 2000 users after the first 2000 users - the input should be: offset=2000 and number of pages=40** <br>
-**MY RECOMMENDATION WOULD BE TO SCRAPE 500 USERS PER RUNTIME (number of pages = 10) - that is more faultproof because if something happens - then we won't lose that much data** <br>
+**MY RECOMMENDATION WOULD BE TO SCRAPE 500 USERS PER RUNTIME (number of pages = 10) - that is more faultproof because if something happens - then we won't lose that much time and data.** <br>
 
 Script logic - **scrape all user data from the desired group** > **use that data to navigate to each scraped user** > **check the "Following" page of each scraped user** > **scrape around 40 groups from each user** > **repeat** > **at the end all the data is appended into an excel table.** <br>
 
@@ -26,11 +26,11 @@ Dependencies: <br>
   pandas** <br>
   
   
-**IMPORTANT - if you want to run the script multiple times - then to avoid data loss move the created results.xlsx file somewhere else - after every successful run then script overwrites that file**<br>
+**IMPORTANT - if you want to run the script multiple times - then to avoid data loss move the created results.xlsx file somewhere else - after every successful run then script overwrites that file.**<br>
 
 How to run: 
 
-**MAKE SURE YOU HAVE STABLE INTERNET CONNECTION**
+**MAKE SURE YOU HAVE STABLE INTERNET CONNECTION.**
 
   1. Download Python.
   2. Download the scraping.py and the secrets.py files.

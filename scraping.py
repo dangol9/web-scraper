@@ -55,7 +55,6 @@ while True:
 
     for i in range(1, 6):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
         sleep(1)
 
     try:
@@ -72,9 +71,6 @@ while True:
 
                 counter += 1
 
-                print("Current page is: ", counter)
-                print("Allpages", all_pages)
-
                 if counter == (all_pages + 1):
                     print(profiles)
                     break
@@ -87,6 +83,8 @@ while True:
     except (exceptions.StaleElementReferenceException, exceptions.NoSuchElementException) as e:
         pass
         break
+
+print(len(profiles))
 
 sleep(1)
 
@@ -125,11 +123,15 @@ for profile in profiles:
 
         for profile_name in profile_names:
             try:
+
                 print(profile_name.text)
                 sleep(1)
                 profile_names_table.append(profile_name.text)
+
             except:
+
                 profile_names_table.append(profile_name)
+
         more_info_btn = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
         more_info_btn.click()
 
@@ -152,8 +154,11 @@ for profile in profiles:
         if not group_names:
 
             print("Groups not available")
+
             group_names_table.insert(i, ["Groups not available"])
+
             print(i)
+
             i += 1
 
         else:
@@ -161,13 +166,14 @@ for profile in profiles:
             listing = []
 
             for group_name in group_names:
+
                 listing.append(group_name.text.split("\n")[0])
                 print(group_name.text.split("\n")[0])
 
-
-
             group_names_table.insert(i, listing)
+
             print(i)
+
             i += 1
 
         print("\n")
@@ -190,6 +196,6 @@ for profile in profiles:
 df['Name'] = profile_names_table
 df['Groups'] = group_names_table
 
-df.to_excel('result_3.xlsx', index = False)
+df.to_excel('result.xlsx', index = False)
 
 driver.quit()

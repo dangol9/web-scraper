@@ -12,7 +12,7 @@ Script asks the user for input: <br>
   **offset - how many users ahead from the first users should the list be** <br>
   
 If we want to scrape 2000 users - then the input should be: **offset=0 and number of pages = 40**, <br>
-**scrape_first_user.py (OBSOLETE) still works but loses it's purpose, becasue the new script takes the first user for data as well.** <br>
+**scrape_first_user.py (OBSOLETE) still works but loses it's purpose, because the new script takes the first user for data as well.** <br>
 
 **To scrape 2000 users after the first 2000 users - the input should be: offset=2000 and number of pages=40** <br>
 **MY RECOMMENDATION WOULD BE TO SCRAPE 500 USERS PER RUNTIME (number of pages = 10) - that is more faultproof because if something happens - then we won't lose that much data** <br>

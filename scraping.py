@@ -33,7 +33,7 @@ offset = input("Enter offset:")
 num_of_pages = input("Enter number of pages you want to see:")
 
 if int(offset) == 0:
-    offset_pages=0
+    offset_pages = 0
 else:
     offset_pages = int(offset) / 50
 
@@ -142,7 +142,6 @@ for profile in profiles:
 
         sleep(2)
 
-        #    driver.execute_script("window.scrollTo(0,document.documentElement.scrollHeight);")
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         sleep(1)

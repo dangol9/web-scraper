@@ -6,6 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from secrets import username, password
 from selenium.common import exceptions
 import pandas as pd
+import names as n
 
 df = pd.DataFrame()
 
@@ -90,7 +91,7 @@ sleep(1)
 
 #python scraping.py
 
-df['Profile'] = profiles
+#df['Profile'] = profiles
 
 profile_names_table = []
 
@@ -122,15 +123,19 @@ for profile in profiles:
     try:
 
         for profile_name in profile_names:
+
             try:
 
-                print(profile_name.text)
+                random_name = n.get_full_name()
+
+                print(profile_name.text + " replaced as " + random_name)
+
                 sleep(1)
-                profile_names_table.append(profile_name.text)
+
+                profile_names_table.append(random_name)
 
             except:
-
-                profile_names_table.append(profile_name)
+                profile_names_table.append("Profile deleted")
 
         more_info_btn = driver.find_element_by_xpath('//*[@class="OwnerInfo__linkBold"]')
         more_info_btn.click()

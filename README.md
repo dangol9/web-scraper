@@ -23,7 +23,8 @@ Dependencies: <br>
   **selenium <br>
   openpyxl <br>
   webdriver_manager <br>
-  pandas** <br>
+  pandas <br>
+  names** <br>
   
   
 **IMPORTANT - if you want to run the script multiple times - then to avoid data loss move the created results.xlsx file somewhere else - after every successful run then script overwrites that file.**<br>

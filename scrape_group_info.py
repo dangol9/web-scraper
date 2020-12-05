@@ -4,9 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from secrets import username, password
-from selenium.common import exceptions
 import pandas as pd
-import names as n
 
 df = pd.DataFrame()
 
@@ -42,12 +40,12 @@ sleep(2)
 
 driver.get("https://vk.com/groups?act=catalog&c%5Blike_hints%5D=1&c%5Bper_page%5D=40&c%5Bsection%5D=communities&c%5Bskip_catalog%5D=1&c%5Bsort%5D=6")
 
-df = pd.read_excel('TopGroup.xlsx')
+df = pd.read_excel('TopGroups.xls')
 groups = df['Group'].tolist()
+print(len(groups))
 
 sleep(1)
-groups = groups[:20]
-print(groups)
+
 for group in groups:
     c += 1
 
@@ -63,6 +61,19 @@ for group in groups:
     sleep(2)
 
     try:
+        name = driver.find_element_by_xpath("//div[contains(@class, 'labeled title')]")
+
+        if(name.text == group):
+            print("Name: "+ name.text)
+            groups_name_table.append(name.text)
+        else:
+            print(group + "(wrong search)")
+            groups_name_table.append(group + "(wrong search)")
+    except:
+        print("Bad search")
+        groups_name_table.append("Bad search")
+
+    try:
         about = driver.find_element_by_xpath("//div[contains(@class, 'labeled')][2]")
         print("About: " + about.text)
         groups_about_table.append(about.text)
@@ -71,24 +82,8 @@ for group in groups:
         groups_about_table.append("No about info")
 
     try:
-        name = driver.find_element_by_xpath("//div[contains(@class, 'labeled title')]")
-        link = driver.find_element_by_xpath("//div[contains(@class, 'labeled title')]/a").get_attribute('href')
-        print("Name: "+ name.text)
-        groups_name_table.append(name.text)
-        #driver.get(link)
-    except:
-        print("Bad search")
-        groups_name_table.append("Bad search")
-
-    #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
-    #sleep(2)
-
-    try:
-        #followers = driver.find_element_by_xpath("//div[@id='public_followers']/a[@class='module_header']/div[contains(@class, 'header_top clear_fix')]")
         followers = driver.find_element_by_xpath("//div[contains(@class, 'labeled')][3]")
         print("Followers: " + followers.text.split(" ")[0])
-        #print("Followers: " + follower.text.split("\n")[1])
         groups_followers_table.append(followers.text.split(" ")[0])
     except:
         print("Followers not available")
@@ -96,9 +91,11 @@ for group in groups:
 
     print(c)
 
+    sleep(1)
+
     driver.get("https://vk.com/groups?act=catalog&c%5Blike_hints%5D=1&c%5Bper_page%5D=40&c%5Bsection%5D=communities&c%5Bskip_catalog%5D=1&c%5Bsort%5D=6")
 
-    sleep(2)
+    sleep(1)
 
 df2['Name']= groups_name_table
 df2['About'] = groups_about_table
